@@ -83,8 +83,8 @@ function GeminiChat({ language, handleLanguageChange, onClose }) {
           </h2>
           <img
             className="w-20 h-12 md:w-24 md:h-14 xl:w-28 xl:h-16 object-cover"
-            src="../src/assets/STEM_LOGO_TUTOR.png"
-            // src={Gemini}
+            // src="../src/assets/STEM_LOGO_TUTOR.png"
+            src={Tour}
             alt="STEM Logo"
           />
           <section className="bg-blue-500 text-white p-2 rounded-md font-suwannaphum">
@@ -105,8 +105,8 @@ function GeminiChat({ language, handleLanguageChange, onClose }) {
         </button>
         <img
           className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-cover rounded-full"
-          src="../src/assets/STEM_LOGO_TUTOR.png"
-            // src={Gemini}
+          // src="../src/assets/STEM_LOGO_TUTOR.png"
+          src={Tour}
           alt="STEM Logo"
         />
         <div className="overflow-auto h-60 md:h-80 xl:h-96 p-2">
