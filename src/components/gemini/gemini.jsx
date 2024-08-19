@@ -3,7 +3,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Card, TextInput, Button, Dropdown, Modal, Spinner, Textarea } from 'flowbite-react';
 import { HiOutlinePaperAirplane, HiX } from 'react-icons/hi'; // Import HiX for the close icon
 import "../../App.css";
-import Gemini from '../../../public/robot (1).png';
+import Gemini from '../../../public/robot (1).png'
+// import Gemini from '../../../public/STEM_LOGO_TUTOR.png'
 
 function GeminiChat({ language, handleLanguageChange, onClose }) {
   const [messages, setMessages] = useState([
@@ -82,8 +83,8 @@ function GeminiChat({ language, handleLanguageChange, onClose }) {
           </h2>
           <img
             className="w-20 h-12 md:w-24 md:h-14 xl:w-28 xl:h-16 object-cover"
-            // src="../src/assets/STEM_LOGO_TUTOR.png"
-            src={Tour}
+            src="../src/assets/STEM_LOGO_TUTOR.png"
+            // src={Gemini}
             alt="STEM Logo"
           />
           <section className="bg-blue-500 text-white p-2 rounded-md font-suwannaphum">
@@ -105,6 +106,7 @@ function GeminiChat({ language, handleLanguageChange, onClose }) {
         <img
           className="w-[50px] h-[50px] md:w-[60px] md:h-[60px] object-cover rounded-full"
           src="../src/assets/STEM_LOGO_TUTOR.png"
+            // src={Gemini}
           alt="STEM Logo"
         />
         <div className="overflow-auto h-60 md:h-80 xl:h-96 p-2">
