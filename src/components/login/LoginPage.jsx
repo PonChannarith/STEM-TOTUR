@@ -30,7 +30,7 @@ const LoginPage = () => {
     setIsLoading(true);
     const item = { email, password };
     try {
-      const response = await fetch(`${API_BASE_URI}login/`, {
+      const response = await fetch(`${API_BASE_URI}login/`.replace(/^http:/, "https:"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
