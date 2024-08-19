@@ -21,7 +21,7 @@ const EditArticle = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://136.228.158.126:50001/api/articles/${id}/`,
+          `https://stem.automatex.dev/api/articles/${id}/`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -87,7 +87,7 @@ const EditArticle = () => {
 
       try {
         const uploadResponse = await fetch(
-          "http://136.228.158.126:50001/api/upload/",
+          "https://stem.automatex.dev/api/upload/",
           {
             method: "POST",
             body: formData,
@@ -117,7 +117,7 @@ const EditArticle = () => {
     const accessToken = localStorage.getItem("access_token");
     try {
       const response = await fetch(
-        `http://136.228.158.126:50001/api/articles/${id}/`,
+        `https://stem.automatex.dev/articles/${id}/`,
         {
           method: "PUT",
           headers: {

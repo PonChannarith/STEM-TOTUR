@@ -183,7 +183,7 @@ const GetForum = () => {
         }
 
         const response = await fetch(
-          `http://136.228.158.126:50001/api/forums/${id}/`,
+          `https://stem.automatex.dev/api/forums/${id}/`,
           {
             method: "DELETE",
             headers: {
@@ -217,7 +217,7 @@ const GetForum = () => {
       }
 
       const response = await fetch(
-        `http://136.228.158.126:50001/api/forums/?page=${currentPage}`,
+        `https://stem.automatex.dev/api/forums/?page=${currentPage}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

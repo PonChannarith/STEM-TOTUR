@@ -21,7 +21,7 @@ const EditForum = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://136.228.158.126:50001/api/forums/${id}/`,
+          `https://stem.automatex.dev/api/forums/${id}/`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -100,7 +100,7 @@ const EditForum = () => {
 
       try {
         const uploadResponse = await fetch(
-          "http://136.228.158.126:50001/api/upload/",
+          "https://stem.automatex.dev/api/upload/",
           {
             method: "POST",
             body: formData,
@@ -130,7 +130,7 @@ const EditForum = () => {
     const accessToken = localStorage.getItem("access_token");
     try {
       const response = await fetch(
-        `http://136.228.158.126:50001/api/forums/${id}/`,
+        `https://stem.automatex.dev/api/forums/${id}/`,
         {
           method: "PUT",
           headers: {

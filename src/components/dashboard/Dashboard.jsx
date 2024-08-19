@@ -42,7 +42,7 @@ const Dashboard = () => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(
-          "http://136.228.158.126:50001/api/profile/",
+          "https://stem.automatex.dev/api/profile/",
           {
             headers: {
               ...AUTH_HEADER,
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
     const fetchNotifications = async () => {
       try {
-        const response = await fetch("http://your-api-url/api/notifications", {
+        const response = await fetch("https://stem.automatex.dev/api/notifications", {
           headers: {
             ...AUTH_HEADER,
             "Content-Type": "application/json",
