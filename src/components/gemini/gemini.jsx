@@ -3,6 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Card, TextInput, Button, Dropdown, Modal, Spinner, Textarea } from 'flowbite-react';
 import { HiOutlinePaperAirplane, HiX } from 'react-icons/hi'; // Import HiX for the close icon
 import "../../App.css";
+import Gemini from '../../../public/robot (1).png';
 
 function GeminiChat({ language, handleLanguageChange, onClose }) {
   const [messages, setMessages] = useState([
@@ -81,7 +82,8 @@ function GeminiChat({ language, handleLanguageChange, onClose }) {
           </h2>
           <img
             className="w-20 h-12 md:w-24 md:h-14 xl:w-28 xl:h-16 object-cover"
-            src="../src/assets/STEM_LOGO_TUTOR.png"
+            // src="../src/assets/STEM_LOGO_TUTOR.png"
+            src={Tour}
             alt="STEM Logo"
           />
           <section className="bg-blue-500 text-white p-2 rounded-md font-suwannaphum">
@@ -183,7 +185,8 @@ function App() {
         onClick={() => setShowChat(true)}
       >
         <img
-          src="../src/assets/robot (1).png"
+          // src="../src/assets/robot (1).png"
+          src={Gemini}
           alt="Robot"
           className="w-full h-full ml-10 -mt-5"
         />
