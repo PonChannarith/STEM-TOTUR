@@ -1,0 +1,16 @@
+.dataTable {
+  border: 1px solid black; /* Add a border around the table */
+}
+
+.dataTable thead th {
+  font-family: "suwannaphum"; /* Set font family for headers */
+  font-size: 20px; /* Set font size for headers */
+  text-align: left; /* Left align header text */
+  padding: 10px; /* Add padding to header cells */
+}
+
+.dataTable tbody td {
+  font-size: 16px; /* Set font size for body cells */
+  text-align: left; /* Left align body text */
+  padding: 5px; /* Add padding to body cells */
+}

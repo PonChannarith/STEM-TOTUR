@@ -1,0 +1,24 @@
+import { API_BASE_URI, AUTH_HEADER } from "./constants";
+
+// apiService.js
+export const savePost = async (postData) => {
+  try {
+    const response = await fetch(`${API_BASE_URI}forums/`, {
+      method: "POST",
+      headers: {
+        ...AUTH_HEADER,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      return { error: errorData };
+    }
+
+    return await response.json();
+  } catch (error) {
+    return { error: { message: error.message } };
+  }
+};

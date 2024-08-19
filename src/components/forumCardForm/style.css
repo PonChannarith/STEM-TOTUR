@@ -1,0 +1,38 @@
+/* Card container styles */
+.card-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Wrapper for each card */
+.card-wrapper {
+  margin-bottom: 15px;
+}
+
+/* Card styles */
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* Title truncation styles */
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 1.125rem;
+
+  color: #1f2937;
+}
+
+/* Adjust description clamping */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

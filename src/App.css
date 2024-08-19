@@ -1,0 +1,66 @@
+li {
+  list-style-type: none;
+  margin: 0px 20px;
+}
+
+/* src/App.css */
+:root {
+  --bg-light: #ffffff;
+  --text-light: #000000;
+  --bg-dark: #000000;
+  --text-dark: #ffffff;
+  --primary: #16A1DF;
+  --primaryT: #ffffff;
+}
+
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+html.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Add this CSS to your stylesheet */
+.img-box img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.img-box img:hover {
+  transform: perspective(1000px) rotateY(10deg) rotateX(10deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.img-box {
+  overflow: hidden;
+}
+
+/* chat AI */
+.element-style {
+  position: relative !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+.max-w-lg {
+  max-width: 40rem !important;
+}
+.items-start {
+  align-items: flex-start !important;
+  margin-top: -10px;
+}
+
+/* TextEditor.css */
+/* #editor .ql-editor {
+  color: black !important; 
+} */
+p {
+  font-size: 1rem;
+  color: rgb(26, 25, 25);
+}
+p {
+  font-size: 1rem;
+  color: black;
+}
