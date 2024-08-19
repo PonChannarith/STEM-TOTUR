@@ -20,7 +20,6 @@ const categories = [
   "កម្រងវិញ្ញាសារ",
   "ផ្សេងៗទៀត",
 ];
-
 const filterKeywords = {
   Google: ["google"],
   គណិតវិទ្យា: ["គណិតវិទ្យា", "math", "mathematics"],
@@ -52,7 +51,7 @@ const Book = () => {
 
   const fetchBooks = (page) => {
     setIsLoading(true);
-    fetch(`http://136.228.158.126:50001/api/courses/?page=${page}`)
+    fetch(`https://stem.automatex.dev/api/courses/?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.results);
@@ -66,12 +65,10 @@ const Book = () => {
         setIsLoading(false);
       });
   };
-
   const handlePageChange = (pageNumber) => {
     if (pageNumber < 1 || pageNumber > totalPages) return;
     fetchBooks(pageNumber);
   };
-
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
     if (filter === "ទាំងអស់") {
@@ -86,7 +83,6 @@ const Book = () => {
       setFilteredData(filtered);
     }
   };
-
   return (
     <>
       <div className="ml-10 mt-5 justify-center font-suwannaphum">
