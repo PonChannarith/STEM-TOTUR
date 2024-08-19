@@ -32,7 +32,7 @@ const BookDetail = () => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(
-          "https://stem.automatex.dev/api/profile/",
+          "http://136.228.158.126:50001/api/profile/",
           {
             headers: {
               ...AUTH_HEADER,
@@ -46,11 +46,14 @@ const BookDetail = () => {
         console.error("Error fetching profile data:", error);
       }
     };
+
     fetchProfile();
   }, []);
+
   if (!profile || !book) {
     return <div>Loading...</div>;
   }
+
   return (
     <section className="mt-8 w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8 p-4 sm:p-8 font-suwannaphum">
       <div className="w-full lg:w-[65%] xl:w-[94%] 2xl:w-[98%] mx-auto">

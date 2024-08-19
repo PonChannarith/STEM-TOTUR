@@ -4,9 +4,9 @@ const BookAllCard = ({ book }) => {
   return (
     <Link to={`/bookDetail/${book.id}`} className="text-blue-600 mt-4 block">
       <div className="bg-white  rounded-lg shadow-md overflow-hidden w-full border">
-      <img
+        <img
           src={
-            `https://stem.automatex.dev/media/uploads/${book.course_thumbnail}/` ||
+            book.course_thumbnail ||
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcff1fvUI1w0QGFGSbG7mIEPDWwRaRYaqSMA&s"
           }
           alt="Course Thumbnail"
