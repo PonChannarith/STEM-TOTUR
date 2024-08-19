@@ -95,15 +95,12 @@ const NavbarComponent = () => {
         <Navbar.Brand>
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             <Link to="/">
-            <img
-              className="w-[60px] h-[60px] xl:w-[80px] xl:h-[70px] 2xl:w-[80px] 2xl:h-[80px] object-cover"
-              src="/Image/STEM_TOTUR.jpg" 
-              alt="STEM Logo"
-            />
-
-
+              <img
+                className="w-[60px] h-[60px]  xl:w-[80px] xl:h-[70px] 2xl:h-[80px] 2xl:w-[80px] object-cover"
+                src="../src/assets/STEM_TOTUR.jpg"
+                alt="STEM Logo"
+              />
             </Link>
-            {/* src="../src/assets/STEM_TOTUR.jpg" */}
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2 items-center space-x-4">
