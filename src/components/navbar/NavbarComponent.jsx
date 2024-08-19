@@ -5,7 +5,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { AUTH_HEADER } from "../../services/constants";
-import Tour from '../../../public/gr.jpg';
+import Tour from '../../../public/STEM_TOTUR.png';
 
 const NavbarComponent = () => {
   const navigate = useNavigate();
