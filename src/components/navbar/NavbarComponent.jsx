@@ -5,7 +5,8 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { AUTH_HEADER } from "../../services/constants";
-import Tour from '../src/assets/STEM_TOTUR.jpg';
+import Tour from '../../../public/gr.jpg';
+
 const NavbarComponent = () => {
   const navigate = useNavigate();
   const [hasAccessToken, setHasAccessToken] = useState(false);
