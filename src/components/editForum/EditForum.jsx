@@ -1,8 +1,8 @@
-import { Textarea } from "flowbite-react";
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import TextEditor from "../texteditor/TextEditor"; // Import TextEditor
+
 const EditForum = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -69,14 +69,14 @@ const EditForum = () => {
   const handleChangeTitle = (content) => {
     setForumData((prevState) => ({
       ...prevState,
-      title: content,
+      title: content, // Fixed title update
     }));
   };
 
   const handleChangeDescription = (content) => {
     setForumData((prevState) => ({
       ...prevState,
-      description: content,
+      description: content, // Fixed description update
     }));
   };
 
@@ -138,8 +138,7 @@ const EditForum = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            title: forumData.title,
-            description: forumData.description,
+            ...forumData,
             image: imageUrl,
           }),
         }
@@ -183,53 +182,57 @@ const EditForum = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 font-suwannaphum bg-white dark:bg-gray-900 mt-10 rounded-lg shadow-extra">
-      <div className="text-2xl font-bold mb-4 text-black text-center mx-auto">
-        កែប្រែសំណួរ
+    <div className="container mx-auto p-4 font-suwannaphum bg-white dark:bg-gray-900 mt-10 rounded-lg w-full max-w-screen-xl shadow-extra">
+      <div className="text-2xl md:text-3xl font-bold mb-4 text-black text-center">
+        កែប្រែវេទិកា
       </div>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">ចំណងជើង</label>
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="w-full md:w-1/2">
+            <label className="block">ចំណងជើង</label>
             <TextEditor
               value={forumData.title}
               onChange={handleChangeTitle}
-              className="text-black font-suwannaphum"
+              className="text-black"
+              placeholder="សូមធ្វើការសរសេរកែប្រែនៅចំណងជើងវេទិការបស់អ្នក......"
             />
-            <label className="block mt-4 text-sm font-medium text-gray-700">សេចក្តីលំអិត</label>
+            <label className="block mt-4">ការពិពណ៌នា</label>
             <TextEditor
               value={forumData.description}
               onChange={handleChangeDescription}
               className="text-black"
+              placeholder="សូមធ្វើការសរសេរកែប្រែនៅការពិពណ៌នារបស់អ្នក......"
             />
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <label className="block text-sm font-medium text-gray-700">រូបភាព</label>
-            <div className="w-full flex justify-center">
-              <label className="border-gray-300 flex flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300 rounded-lg">
-                <div className="flex flex-col items-center justify-center pt-7 border-gray-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-12 h-12 text-gray-400"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <p className="pt-1 text-lg tracking-wider font-suwannaphum">
-                    សូមជ្រើសរើសរូបភាព
-                  </p>
-                </div>
-                <input
-                  type="file"
-                  className="opacity-0"
-                  onChange={handleFileChange}
-                />
-              </label>
+          <div className="w-full md:w-1/2">
+            <label className="inline-block">រូបភាព</label>
+            <div className="rounded-lg shadow-xl bg-gray-50">
+              <div className="flex items-center justify-center w-full">
+                <label className="flex m-5 flex-col w-full h-32 border-4 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                  <div className="flex flex-col items-center justify-center pt-7">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-12 h-12 text-gray-400 group-hover:text-gray-600"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <p className="pt-1 text-lg tracking-wider font-suwannaphum group-hover:text-gray-600">
+                      សូមជ្រើសរើសរូបភាព
+                    </p>
+                  </div>
+                  <input
+                    type="file"
+                    className="opacity-0"
+                    onChange={handleFileChange}
+                  />
+                </label>
+              </div>
             </div>
             {previewImage && (
               <div className="mt-2">
@@ -243,7 +246,6 @@ const EditForum = () => {
             )}
           </div>
         </div>
-
         <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4 mt-4">
           <button
             type="submit"
@@ -256,7 +258,6 @@ const EditForum = () => {
             type="button"
             className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
             onClick={handleCancel}
-            disabled={loading}
           >
             បោះបង់
           </button>

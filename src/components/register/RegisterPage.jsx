@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { CgMail } from "react-icons/cg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Swal from "sweetalert2";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ const RegisterPage = () => {
       username: Yup.string().required("Username is required"),
       email: Yup.string().email("Invalid email address").required("Email is required"),
       password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/,
-        "Password must contain one uppercase, one lowercase, one number, and one special case character"
-      )
-      .required("Password is required"),
+        .min(6, "Password must be at least 6 characters")
+        .matches(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/,
+          "Password must contain one uppercase, one lowercase, one number, and one special case character"
+        )
+        .required("Password is required"),
       confirm_password: Yup.string()
         .oneOf([Yup.ref('password'), null], "Passwords must match")
         .required("Confirm password is required"),
@@ -44,26 +45,40 @@ const RegisterPage = () => {
         );
 
         if (response.status === 201) {
-          alert("Account has been created successfully.");
-          navigate("/otp");
+          Swal.fire({
+            title: "Registration Successful",
+            text: "You are now registered.",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(() => navigate("/otp"));
         } else {
-          // Handle potential API-specific error messages:
-          alert(response.data.message || "Registration failed.");
+          Swal.fire({
+            title: "Registration Failed",
+            text: "Please try again.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
       } catch (error) {
         console.error(error);
-        alert(error.message || "An error occurred while submitting the form.");
+        Swal.fire({
+          title: "Error",
+          text: error.message || "An error occurred while submitting the form.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       }
     },
   });
+
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
 
   return (
     <div className="font-suwannaphum">
       <div className="flex flex-col items-center justify-center p-6">
-        <div className="grid lg:grid-cols-2 items-center gap-6 max-w-7xl max-lg:max-w-xl w-ful">
-          <form onSubmit={formik.handleSubmit} className="lg:max-w-md w-full ">
+        <div className="grid lg:grid-cols-2 items-center gap-6 max-w-7xl max-lg:max-w-xl w-full">
+          <form onSubmit={formik.handleSubmit} className="lg:max-w-md w-full">
             <h3 className="text-blue-600 text-2xl font-suwannaphum font-semibold mb-3 text-center">
               បង្កើតគណនី
             </h3>
@@ -168,7 +183,7 @@ const RegisterPage = () => {
                     className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-800 cursor-pointer"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ?  <FaEye /> : <FaEyeSlash />  }
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
                   </div>
                 </div>
                 {formik.touched.password && formik.errors.password ? (
@@ -189,7 +204,7 @@ const RegisterPage = () => {
                     value={formik.values.confirm_password}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    placeholder="Confirm your password"
+                    placeholder="បញ្ចូលពាក្យសម្ងាត់"
                   />
                   <div
                     className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-800 cursor-pointer"
@@ -202,7 +217,6 @@ const RegisterPage = () => {
                   <div className="text-red-600 text-sm">{formik.errors.confirm_password}</div>
                 ) : null}
               </div>
-
               <div className="flex items-center">
                 <input
                   id="remember-me"
@@ -224,7 +238,7 @@ const RegisterPage = () => {
                 </label>
               </div>
             </div>
-
+              
             <div className="mt-12">
               <button
                 type="submit"

@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { fetchBookById } from "../../services/fetchBookById";
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
-import book1 from "../../assets/book1.pdf";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-
-// Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import { AUTH_HEADER } from "../../services/constants";
+
 const BookDetail = () => {
   const { id } = useParams();
   const bookId = decodeURIComponent(id);
   const [book, setBook] = useState(null);
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
   useEffect(() => {
     const fetchBookData = async () => {
       try {
@@ -25,9 +24,8 @@ const BookDetail = () => {
       }
     };
     fetchBookData();
-  }, []);
+  }, [bookId]);
 
-  //
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -51,17 +49,14 @@ const BookDetail = () => {
 
     fetchProfile();
   }, []);
-  if (!profile) {
-    return <div>Loading...</div>;
-  }
-  //
-  if (!book) {
+
+  if (!profile || !book) {
     return <div>Loading...</div>;
   }
 
   return (
-    <section className="mt-8 w-[100%] mx-auto flex flex-col md:flex-row justify-between gap-8 p-8 font-suwannaphum ">
-      <div className="w-full md:w-[65%]">
+    <section className="mt-8 w-full max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8 p-4 sm:p-8 font-suwannaphum">
+      <div className="w-full lg:w-[65%] xl:w-[94%] 2xl:w-[98%] mx-auto">
         <div>
           {book.categories.map((category) => (
             <div key={category.id}>
@@ -92,24 +87,23 @@ const BookDetail = () => {
         </div>
       </div>
 
-      <div className="w-full md:w-[35%] flex flex-col gap-8 ">
-        {/*  */}
-        <div className="w-full p-4 bg-gray-200 rounded-lg shadow-sm flex items-center gap-4 sticky top-28   ">
-        <img
+      <div className="w-full lg:w-[35%] flex flex-col gap-8 mx-auto ">
+        <div className="w-full p-4 bg-gray-200 rounded-lg shadow-sm flex items-center gap-4 sticky top-28">
+          <img
             src={
               profile.image ||
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL_JlCFnIGX5omgjEjgV9F3sBRq14eTERK9w&s"
-              }
-          alt="Profile"
+            }
+            alt="Profile"
             className="w-12 h-12 rounded-full"
           />
           <div className="ml-3 flex flex-col items-start">
-            <div className="font-bold text-sm mt-2">{`${book.created_by}`}</div>
-            <div className="text-gray-400 text-xs mt-2">@{book.created_by}</div>
+            <div className="font-bold text-sm">{`${book.created_by}`}</div>
+            <div className="text-gray-400 text-xs">@{book.created_by}</div>
           </div>
           <button
             type="button"
-            className="px-4 py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-75 transition-transform mx-5 flex mt-0 font-suwannaphum ml-56"
+            className="px-4 py-2 sm:py-3 bg-blue-600 rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-75 transition-transform mx-auto lg:mx-0 flex mt-0 font-suwannaphum ml-auto"
           >
             <svg
               className="h-6 w-6"
@@ -118,19 +112,18 @@ const BookDetail = () => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               />
             </svg>
-
             <span className="ml-2">ទាញយក</span>
           </button>
         </div>
-        {/*  */}
-        <div className="w-full p-4 bg-gray-200 rounded-lg ">
-          <ul className="space-y-2 ">
+
+        <div className="w-full p-4 bg-gray-200 rounded-lg">
+          <ul className="space-y-2">
             <li className="flex justify-between">
               <span>ប្រភេទសៀវភៅ</span>
               <span>{book.course_name}</span>

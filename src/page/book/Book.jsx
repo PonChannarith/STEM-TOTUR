@@ -52,7 +52,7 @@ const Book = () => {
 
   const fetchBooks = (page) => {
     setIsLoading(true);
-    fetch(`http://136.228.158.126:50001/api/courses/?page=${page}`).replace(/^http:/, "https:")
+    fetch(`http://136.228.158.126:50001/api/courses/?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.results);

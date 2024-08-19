@@ -5,7 +5,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import Swal from "sweetalert2";
 import { AUTH_HEADER } from "../../services/constants";
-
+import Tour from '../src/assets/STEM_TOTUR.jpg';
 const NavbarComponent = () => {
   const navigate = useNavigate();
   const [hasAccessToken, setHasAccessToken] = useState(false);
@@ -97,7 +97,7 @@ const NavbarComponent = () => {
             <Link to="/">
               <img
                 className="w-[60px] h-[60px]  xl:w-[80px] xl:h-[70px] 2xl:h-[80px] 2xl:w-[80px] object-cover"
-                src="../src/assets/STEM_TOTUR.jpg"
+                src={Tour}
                 alt="STEM Logo"
               />
             </Link>
