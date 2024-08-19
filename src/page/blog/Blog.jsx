@@ -43,7 +43,8 @@ export const Blog = () => {
 
   const fetchBlogs = (page) => {
     setIsLoading(true);
-    fetch(`http://136.228.158.126:50001/api/articles/?page=${page}`)
+    // fetch(`http://136.228.158.126:50001/api/articles/?page=${page}`)
+    fetch(`https://stem.automatex.dev/api/articles/?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.results);

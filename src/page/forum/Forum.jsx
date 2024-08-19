@@ -16,7 +16,8 @@ const Forum = () => {
 
   const fetchForums = (page) => {
     setIsLoading(true);
-    fetch(`http://136.228.158.126:50001/api/forums/?page=${page}`)
+    // fetch(`http://136.228.158.126:50001/api/forums/?page=${page}`)
+    fetch(`https://stem.automatex.dev/api/forums/?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setForums(data.results);

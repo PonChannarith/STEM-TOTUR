@@ -53,7 +53,8 @@ const Lesson = () => {
 
   const fetchLessons = (page) => {
     setIsLoading(true);
-    fetch(`http://136.228.158.126:50001/api/lessons/?page=${page}`)
+    // fetch(`http://136.228.158.126:50001/api/lessons/?page=${page}`)
+    fetch(`https://stem.automatex.dev/api/lessons/?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.results);
